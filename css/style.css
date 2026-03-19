@@ -103,6 +103,11 @@ section {
 }
 
 /* ===== HEADER ===== */
+
+.nav__logo {
+  display: flex;
+  margin-right: 10px;
+}
 .header {
   position: fixed;
   top: 20px;
@@ -858,6 +863,10 @@ section {
   }
 }
 @media (max-width: 768px) {
+  .container {
+    margin: 0;
+    padding: 0 5px;
+  }
   .nav__menu {
     display: none;
     position: fixed;
