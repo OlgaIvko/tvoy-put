@@ -162,3 +162,63 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+// Анимация появления для карточек центров и наставников
+const centerCards = document.querySelectorAll(".center-card");
+const mentorCards = document.querySelectorAll(".mentor-card");
+
+const observerCards = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observerCards.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.2, rootMargin: "0px 0px -50px 0px" },
+);
+
+centerCards.forEach((card) => {
+  card.style.opacity = "0";
+  card.style.transform = "translateY(30px)";
+  card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+  observerCards.observe(card);
+});
+// Анимация для карточек функционала
+// const featureCards = document.querySelectorAll(".feature-card");
+// if (featureCards.length) {
+//   const observerFeatures = new IntersectionObserver(
+//     (entries) => {
+//       entries.forEach((entry) => {
+//         if (entry.isIntersecting) {
+//           entry.target.classList.add("visible");
+//           observerFeatures.unobserve(entry.target);
+//         }
+//       });
+//     },
+//     { threshold: 0.2, rootMargin: "0px 0px -50px 0px" },
+//   );
+//   featureCards.forEach((card) => {
+//     card.style.opacity = "0";
+//     card.style.transform = "translateY(30px)";
+//     card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+//     observerFeatures.observe(card);
+//   });
+// }
+
+// Анимация для карточек функционала
+const featureCards = document.querySelectorAll(".feature-card");
+if (featureCards.length) {
+  const observerFeatures = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observerFeatures.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2, rootMargin: "0px 0px -50px 0px" },
+  );
+  featureCards.forEach((card) => observerFeatures.observe(card));
+}
